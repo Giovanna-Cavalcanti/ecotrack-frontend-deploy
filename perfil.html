@@ -87,10 +87,6 @@
           }
         });
         const data = await res.json();
-        if (!res.ok) {
-          alert(data.message || 'Erro ao buscar perfil.');
-          return;
-        }
 
         // Exibir nome e pontos
         document.getElementById('user-name').textContent = data.name || 'Usuário';
@@ -110,8 +106,6 @@
         }
 
       } catch (err) {
-        console.error(err);
-        alert('Erro ao conectar com o servidor.');
       }
     }
 
