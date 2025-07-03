@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Identificador de Material</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanner-container">
+    <video id="webcam" autoplay muted playsinline width="300" height="225"></video>
+    <div class="scanner-overlay"></div>
+    <div class="info-box">
+      <h3 id="material-nome">Detectando...</h3>
+      <p id="material-lixeira">Lixeira correta: —</p>
+      <button id="iniciarBtn" onclick="analisar()">Iniciar Identificação</button>
+      <div id="resultado"></div>
+    </div>
+  </div>
+
+  <!-- TensorFlow + MobileNet -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+  <script>
+    let model;
+    const video = document.getElementById('webcam');
+    const resultado = document.getElementById('resultado');
+    const materialNome = document.getElementById('material-nome');
+    const materialLixeira = document.getElementById('material-lixeira');
+
+    // Iniciar webcam e carregar modelo
+    async function iniciar() {
+      model = await mobilenet.load();
+      console.log('Modelo carregado');
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(err => {
+          console.error('Erro ao acessar webcam:', err);
+          alert('Não foi possível acessar a câmera.');
+        });
+    }
+    iniciar();
+
+    // Analisar imagem da webcam e classificar
+    async function analisar() {
+      if (!model) {
+        alert('Modelo ainda não carregado.');
+        return;
+      }
+
+      const predictions = await model.classify(video);
+      if (!predictions || predictions.length === 0) {
+        resultado.innerHTML = 'Nenhum objeto reconhecido.';
+        return;
+      }
+
+      const objeto = predictions[0].className.toLowerCase();
+
+      fetch('descarte.json')
+        .then(res => res.json())
+        .then(dados => {
+          const info = dados[objeto] || {
+            nome: objeto,
+            material: "Desconhecido",
+            tipo: "Não identificado",
+            risco: "Não foi possível determinar o risco.",
+            descarte: "Consulte autoridades locais ou descarte especializado."
+          };
+
+          resultado.innerHTML = `
+            <strong>Objeto:</strong> ${info.nome}<br>
+            <strong>Material:</strong> ${info.material}<br>
+            <strong>Classificação:</strong> ${info.tipo}<br>
+            <strong>Risco:</strong> ${info.risco}<br>
+            <strong>Descarte:</strong> ${info.descarte}
+          `;
+
+          materialNome.textContent = `Detectado: ${info.nome}`;
+          materialLixeira.textContent = `Lixeira correta: ${info.material}`;
+
+          const mensagem = `Você está segurando um ${info.nome}. 
+            Material: ${info.material}. 
+            Classificação: ${info.tipo}. 
+            Risco: ${info.risco}. 
+            Descarte recomendado: ${info.descarte}.`;
+
+          const fala = new SpeechSynthesisUtterance(mensagem);
+          speechSynthesis.speak(fala);
+        })
+        .catch(err => {
+          console.error('Erro ao carregar JSON:', err);
+          resultado.innerHTML = 'Erro ao buscar dados de descarte.';
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack - Registrar Reciclagem</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="form.css">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+   <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="home.html"><i class='bx bx-home-alt nav-icon'></i></a>
+        <a href="perfil.html"><i class='bx bx-user nav-icon'></i></a>
+        <a href="frontend-scaner/index.html" id="central"><i class='bx bx-scan nav-icon'
+            style="background: #4CAF50; border-radius: 50%; padding: 8px; width: 40px; height: 40px; color: white;"></i></a>
+        <a href="form.html"><i class='bx bx-plus nav-icon'></i></a>
+        <a href="#"><i class='bx bx-search nav-icon'></i></a>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1 class="header-title">Registrar Reciclagem</h1>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+        <div class="success-message" id="successMessage">
+            <i class='bx bx-check-circle' style="font-size: 20px; margin-right: 8px;"></i>
+            Reciclagem registrada com sucesso!
+        </div>
+
+        <div class="form-container">
+            <form id="recyclingForm">
+                <div class="form-group">
+                    <label for="material" class="form-label">Material</label>
+                    <select id="material" name="material" class="form-select" required>
+                        <option value="">Selecione o material</option>
+                        <option value="plástico">Plástico</option>
+                        <option value="papel">Papel</option>
+                        <option value="vidro">Vidro</option>
+                        <option value="metal">Metal</option>
+                        <option value="organico">Orgânico</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade" class="form-label">Quantidade</label>
+                    <input type="number" id="quantityKg" name="quantidade" class="form-input"
+                        placeholder="Digite a quantidade" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="observacao" class="form-label">Observação</label>
+                    <textarea id="observation" name="observacao" class="form-textarea"
+                        placeholder="Digite suas observações (opcional)"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class='bx bx-check' style="margin-right: 8px;"></i>
+                    Registrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('recyclingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const material = document.getElementById('material').value;
+    const quantityKg = parseFloat(document.getElementById('quantityKg').value);
+    const observation = document.getElementById('observation').value;
+
+    const token = localStorage.getItem('token'); // token salvo após login
+
+    if (!token) {
+    alert('Você precisa estar logado para registrar reciclagem.');
+    return;
+    }
+
+    const body = { material, quantityKg, observation };
+
+    try {
+    const res = await fetch('https://ecotrack-backend-deploy.onrender.com/api/recycle', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    });
+
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert('Reciclagem registrada com sucesso!');
+      e.target.reset();
+    } else {
+      alert(data.message || 'Erro ao registrar reciclagem.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Erro ao conectar com a API.');
+  }
+});
+
+  </script>
+</body>
+
+</html>

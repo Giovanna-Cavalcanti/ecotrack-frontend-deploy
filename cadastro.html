@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - EcoTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-section">
+      <img src="imgs/planta.jpg" alt="Fundo com folhas" class="bg-image">
+      <div class="logo">
+        <img src="imgs/logo_cad_log.png" alt="Logo EcoTrack">
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Bem-Vindo (a)!</h2>
+
+      <form id="registerForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+
+        <label for="confirmPassword">Confirmação de Senha:</label>
+        <input type="password" id="confirmPassword" required>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <p class="login-text">Já tem uma conta? <a href="login.html">Logar</a></p>
+    </div>
+  </div>
+</body>
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      const confirmPassword = form.confirmPassword.value;
+
+      const body = { name, email, password, confirmPassword };
+
+      try {
+        const res = await fetch('https://ecotrack-backend-deploy.onrender.com/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert('Usuário registrado com sucesso!');
+          console.log('Resposta:', data);
+          // Redirecionar ou limpar formulário
+          window.location.href = 'home.html';  // Redireciona para página de reciclagem
+          form.reset();
+        } else {
+          alert(data.message || 'Erro ao registrar');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao conectar com a API.');
+      }
+    });
+</script>
+</html>

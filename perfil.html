@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack - Perfil</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="home.html"><i class='bx bx-home-alt nav-icon'></i></a>
+        <a href="perfil.html"><i class='bx bx-user nav-icon'></i></a>
+        <a href="frontend-scaner/index.html" id="central"><i class='bx bx-scan nav-icon'
+            style="background: #4CAF50; border-radius: 50%; padding: 8px; width: 40px; height: 40px; color: white;"></i></a>
+        <a href="form.html"><i class='bx bx-plus nav-icon'></i></a>
+        <a href="#"><i class='bx bx-search nav-icon'></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-header">
+        <img src="imgs/user.webp" alt="Foto de perfil" class="profile-image">
+        <div class="profile-info">
+          <h1 class="profile-name" id="user-name">Carregando...</h1>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="user-points">--</span> XP
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recycling Section -->
+    <div class="recycling-section">
+      <div class="recycling-header">
+        <h2 class="recycling-title">Algumas das suas reciclagens:</h2>
+        <div class="header-buttons">
+          <button class="history-btn" onclick="window.location.href='historico.html'">
+            <i class='bx bx-history'></i>
+            Histórico
+          </button>
+          <a href="form.html" class="add-btn">
+            <i class='bx bx-plus'></i>
+            Adicionar
+          </a>
+        </div>
+      </div>
+      <div class="recycling-grid">
+        <div class="recycling-item">
+          <span>Imagem de reciclagem</span>
+        </div>
+        <div class="recycling-item">
+          <span>Imagem de reciclagem</span>
+        </div>
+        <div class="recycling-item">
+          <span>Imagem de reciclagem</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function carregarPerfil() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Você precisa estar logado.');
+        return;
+      }
+
+      try {
+        // Buscar perfil
+        const res = await fetch('https://ecotrack-backend-deploy.onrender.com/api/user/me', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          alert(data.message || 'Erro ao buscar perfil.');
+          return;
+        }
+
+        // Exibir nome e pontos
+        document.getElementById('user-name').textContent = data.name || 'Usuário';
+        document.getElementById('user-points').textContent = data.points ?? 0;
+
+        // Exibir medalhas
+        const medalContainer = document.getElementById('medals-list');
+        medalContainer.innerHTML = '';
+        if (data.medals && data.medals.length > 0) {
+          data.medals.forEach(medal => {
+            const li = document.createElement('li');
+            li.textContent = `${medal.title} - ${medal.description}`;
+            medalContainer.appendChild(li);
+          });
+        } else {
+          medalContainer.innerHTML = '<li>Nenhuma medalha</li>';
+        }
+
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao conectar com o servidor.');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarPerfil);
+  </script>
+</body>
+
+</html>

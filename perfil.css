@@ -1,0 +1,202 @@
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .nav-icon {
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-icon:hover {
+            opacity: 1;
+        }
+        /* Profile Section */
+        .profile-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .profile-name {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2d5a31;
+            margin-bottom: 10px;
+        }
+        .profile-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .location-icon {
+            font-size: 18px;
+        }
+        .profile-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .stat-item {
+            font-size: 18px;
+            color: #374151;
+        }
+        .stat-number {
+            font-weight: 600;
+            color: #2d5a31;
+        }
+        /* Recycling Section */
+        .recycling-section {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recycling-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .recycling-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #374151;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .add-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .add-btn:hover {
+            background: #45a049;
+        }
+        .history-btn {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .history-btn:hover {
+            background: #4b5563;
+        }
+        .recycling-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .recycling-item {
+            background: #d1d5db;
+            border-radius: 12px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        /* Responsive - Same as Home Page */
+        @media (max-width: 768px) {
+            .nav-content {
+                gap: 20px;
+            }
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            .profile-name {
+                font-size: 24px;
+            }
+            .recycling-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .add-btn,
+            .history-btn {
+                justify-content: center;
+            }
+            .recycling-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .recycling-item {
+                height: 120px;
+            }
+        }

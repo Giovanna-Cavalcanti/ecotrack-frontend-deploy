@@ -1,0 +1,170 @@
+{
+  "plastic bottle": {
+    "nome": "Garrafa plástica",
+    "material": "Plástico",
+    "tipo": "Reciclável",
+    "risco": "Demora séculos para se decompor. Pode poluir oceanos e afetar animais marinhos.",
+    "descarte": "Descarte na lixeira azul. Remova rótulo e tampa, se possível, e enxágue antes de descartar."
+  },
+  "water bottle": {
+    "nome": "Garrafa plástica",
+    "material": "Plástico",
+    "tipo": "Reciclável",
+    "risco": "Demora séculos para se decompor. Pode poluir oceanos e afetar animais marinhos.",
+    "descarte": "Descarte na lixeira azul. Remova rótulo e tampa, se possível, e enxágue antes de descartar."
+  },
+  "battery": {
+    "nome": "Pilha ou bateria",
+    "material": "Resíduo químico",
+    "tipo": "Perigoso",
+    "risco": "Contém metais pesados como lítio, cádmio e chumbo, que contaminam o solo e a água.",
+    "descarte": "Leve a pontos de coleta em farmácias, supermercados ou ecopontos da sua cidade."
+  },
+  "laptop": {
+    "nome": "Notebook",
+    "material": "Lixo eletrônico",
+    "tipo": "Eletrônico",
+    "risco": "Contém placas, metais pesados e baterias que não devem ir para o lixo comum.",
+    "descarte": "Entregue em centros de coleta de eletrônicos ou campanhas de reciclagem tecnológica."
+  },
+  "apple": {
+    "nome": "Maçã",
+    "material": "Orgânico",
+    "tipo": "Comum",
+    "risco": "Resíduo biodegradável. Se descartado incorretamente, atrai insetos e libera gás metano.",
+    "descarte": "Use compostagem doméstica ou descarte na lixeira marrom."
+  },
+  "glass bottle": {
+    "nome": "Garrafa de vidro",
+    "material": "Vidro",
+    "tipo": "Reciclável",
+    "risco": "Pode causar ferimentos e demora séculos para se decompor.",
+    "descarte": "Descarte em lixeira verde. Enxágue antes de descartar. Não quebre o vidro."
+  },
+  "aluminum can": {
+    "nome": "Lata de alumínio",
+    "material": "Metal",
+    "tipo": "Reciclável",
+    "risco": "Alumínio é altamente reciclável, mas se descartado incorretamente polui e acumula.",
+    "descarte": "Descarte na lixeira amarela. Amasse para economizar espaço e enxágue."
+  },
+  "cell phone": {
+    "nome": "Celular",
+    "material": "Lixo eletrônico",
+    "tipo": "Eletrônico",
+    "risco": "Contém bateria de lítio e metais raros. Nunca deve ir para o lixo comum.",
+    "descarte": "Leve a postos de coleta autorizados ou programas de logística reversa de operadoras."
+  },
+  "milk carton": {
+    "nome": "Caixa de leite (Tetra Pak)",
+    "material": "Material composto",
+    "tipo": "Reciclável",
+    "risco": "Composto por plástico, alumínio e papel. Demora para se decompor.",
+    "descarte": "Lixeira azul. Enxágue e dobre antes de descartar."
+  },
+  "styrofoam": {
+    "nome": "Isopor",
+    "material": "Plástico (poliestireno expandido)",
+    "tipo": "Reciclável (em alguns municípios)",
+    "risco": "Leve, espalha-se facilmente, polui cursos d'água e afeta a vida marinha.",
+    "descarte": "Se houver coleta, descarte na lixeira azul. Consulte sua cidade."
+  },
+  "syringe": {
+    "nome": "Seringa",
+    "material": "Resíduo hospitalar",
+    "tipo": "Perigoso",
+    "risco": "Risco de contaminação biológica e perfurações.",
+    "descarte": "Nunca descarte no lixo comum. Leve a unidades de saúde ou campanhas de descarte."
+  },
+  "cardboard box": {
+    "nome": "Caixa de papelão",
+    "material": "Papel",
+    "tipo": "Reciclável",
+    "risco": "Se molhado, perde capacidade de reciclagem. Acúmulo atrai pragas.",
+    "descarte": "Lixeira azul. Dobre e mantenha seca antes de descartar."
+  },
+  "oil bottle": {
+    "nome": "Garrafa de óleo usado",
+    "material": "Resíduo químico",
+    "tipo": "Perigoso",
+    "risco": "Contamina milhares de litros de água e solo. Nunca jogue na pia ou ralo.",
+    "descarte": "Armazene bem vedada e leve a ecopontos ou locais que aceitam óleo usado."
+  },
+  "paper": {
+    "nome": "Papel comum",
+    "material": "Papel",
+    "tipo": "Reciclável",
+    "risco": "Se descartado com sujeira ou gordura, perde potencial de reciclagem.",
+    "descarte": "Lixeira azul. Não misture com papel higiênico ou papel engordurado."
+  },
+  "banana peel": {
+    "nome": "Casca de banana",
+    "material": "Orgânico",
+    "tipo": "Comum",
+    "risco": "Pode atrair insetos e gerar mau cheiro se descartado incorretamente.",
+    "descarte": "Use compostagem doméstica ou descarte na lixeira marrom."
+  },
+  "toothbrush": {
+    "nome": "Escova de dente",
+    "material": "Plástico",
+    "tipo": "Não reciclável",
+    "risco": "Feita de materiais mistos, não é reciclável na maioria das cidades.",
+    "descarte": "Descarte no lixo comum ou verifique programas de logística reversa."
+  },
+  "light bulb": {
+    "nome": "Lâmpada",
+    "material": "Vidro e metais",
+    "tipo": "Perigoso",
+    "risco": "Pode conter mercúrio, risco à saúde e ao meio ambiente.",
+    "descarte": "Leve a pontos de coleta específicos para lâmpadas."
+  },
+  "newspaper": {
+    "nome": "Jornal",
+    "material": "Papel",
+    "tipo": "Reciclável",
+    "risco": "Pouco risco, mas se molhado perde capacidade de reciclagem.",
+    "descarte": "Lixeira azul. Mantenha seco."
+  },
+  "pizza box": {
+    "nome": "Caixa de pizza",
+    "material": "Papelão",
+    "tipo": "Condicional",
+    "risco": "Gordura pode inviabilizar a reciclagem.",
+    "descarte": "Parte limpa: lixeira azul. Parte suja: lixo comum."
+  },
+  "printer cartridge": {
+    "nome": "Cartucho de impressora",
+    "material": "Eletrônico",
+    "tipo": "Perigoso",
+    "risco": "Pode conter resíduos químicos prejudiciais.",
+    "descarte": "Programas de coleta específicos ou lojas autorizadas."
+  },
+  "book": {
+    "nome": "Livro",
+    "material": "Papel",
+    "tipo": "Reciclável",
+    "risco": "Pouco risco ambiental.",
+    "descarte": "Doe, reutilize ou descarte na lixeira azul."
+  },
+  "glass jar": {
+    "nome": "Pote de vidro",
+    "material": "Vidro",
+    "tipo": "Reciclável",
+    "risco": "Pode quebrar e causar acidentes.",
+    "descarte": "Lixeira verde. Enxágue antes de descartar."
+  },
+  "cigarette butt": {
+    "nome": "Bituca de cigarro",
+    "material": "Fibras sintéticas",
+    "tipo": "Poluente",
+    "risco": "Altamente poluente, libera substâncias tóxicas.",
+    "descarte": "Descarte no lixo comum em local seco."
+  },
+  "nail polish": {
+    "nome": "Esmalte",
+    "material": "Químico",
+    "tipo": "Perigoso",
+    "risco": "Contém solventes nocivos ao meio ambiente.",
+    "descarte": "Leve a pontos de coleta para resíduos químicos."
+  }
+}

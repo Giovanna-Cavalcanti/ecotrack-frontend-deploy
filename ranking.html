@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack - Ranking</title>
+  <link rel="stylesheet" href="ranking.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="home.html"><i class='bx bx-home-alt nav-icon'></i></a>
+        <a href="perfil.html"><i class='bx bx-user nav-icon'></i></a>
+        <a href="frontend-scaner/index.html" id="central"><i class='bx bx-scan nav-icon'
+            style="background: #4CAF50; border-radius: 50%; padding: 8px; width: 40px; height: 40px; color: white;"></i></a>
+        <a href="form.html"><i class='bx bx-plus nav-icon'></i></a>
+        <a href="#"><i class='bx bx-search nav-icon'></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="page-title">Ranking</h1>
+    </div>
+
+    <!-- Podium Section -->
+    <div class="podium-section" id="podium-section"></div>
+
+    <!-- Ranking List -->
+    <div class="ranking-list" id="ranking-list"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        alert('Você precisa estar logado para visualizar o ranking.');
+        return;
+      }
+
+      try {
+        const res = await fetch('https://ecotrack-backend-deploy.onrender.com/api/user/rank', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        const contentType = res.headers.get('content-type');
+        if (!contentType.includes('application/json')) {
+          const html = await res.text();
+          console.error('Resposta inesperada:', html);
+          return;
+        }
+
+        const data = await res.json();
+
+        // Exibe o pódio (top 3)
+        const podiumDiv = document.getElementById('podium-section');
+        const top3 = data.slice(0, 3);
+
+        const podiumHTML = top3.map((user, index) => {
+          const classes = ['first', 'second', 'third'];
+          const icons = ['bx-crown', 'bx-medal', 'bx-medal'];
+          const rank = index + 1;
+
+          return `
+            <div class="podium-item">
+              <div class="podium-base ${classes[index]}">
+                <div class="rank-number">${rank}</div>
+                <img src="imgs/user.webp?height=45&width=45" alt="${user.name}" class="profile-pic">
+                <div class="username">${user.name}</div>
+                <i class='bx ${icons[index]} medal-icon'></i>
+              </div>
+            </div>
+          `;
+        }).join('');
+        podiumDiv.innerHTML = podiumHTML;
+
+        // Exibe a lista de todos
+        const listDiv = document.getElementById('ranking-list');
+        listDiv.innerHTML = '';
+
+        data.forEach((user, index) => {
+          listDiv.innerHTML += `
+            <div class="ranking-item rank-${index + 1}">
+              <div class="rank-position">${index + 1}</div>
+              <div class="user-info">
+                <img src="imgs/user.webp?height=32&width=32" alt="${user.name}" class="user-pic">
+                <div class="user-name">${user.name}</div>
+              </div>
+              <div class="user-xp">${user.points} xp</div>
+            </div>
+          `;
+        });
+
+      } catch (err) {
+        console.error('Erro ao buscar ranking:', err);
+        alert('Erro ao conectar com o servidor.');
+      }
+    });
+  </script>
+</body>
+
+</html>

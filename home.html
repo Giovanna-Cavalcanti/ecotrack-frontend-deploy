@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack</title>
+  <link rel="stylesheet" href="home.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="home.html"><i class='bx bx-home-alt nav-icon'></i></a>
+        <a href="perfil.html"><i class='bx bx-user nav-icon'></i></a>
+        <a href="frontend-scaner/index.html" id="central"><i class='bx bx-scan nav-icon'
+            style="background: #4CAF50; border-radius: 50%; padding: 8px; width: 40px; height: 40px; color: white;"></i></a>
+        <a href="form.html"><i class='bx bx-plus nav-icon'></i></a>
+        <a href="#"><i class='bx bx-search nav-icon'></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Filter Buttons -->
+  <div class="container">
+    <div class="filters">
+      <button class="filter-btn" data-filter="todos">Populares</button>
+      <button class="filter-btn active" data-filter="azul">Azul</button>
+      <button class="filter-btn" data-filter="verde">Verde</button>
+      <button class="filter-btn" data-filter="vermelho">Vermelho</button>
+      <button class="filter-btn" data-filter="amarelo">Amarelo</button>
+      <button class="filter-btn" data-filter="marrom">Marrom</button>
+      <button class="filter-btn" data-filter="preto">Preto</button>
+      <button class="filter-btn" data-filter="laranja">Laranja</button>
+      <button class="filter-btn" data-filter="cinza">Cinza</button>
+    </div>
+
+    <!-- Diquinhas da EcoTrack Section -->
+    <div id="ecoTipsSection" style="display: none;">
+      <h2 class="section-title" id="sectionTitle">Diquinhas da EcoTrack</h2>
+      <div class="cards-grid">
+        <div class="card" data-lixeira="vermelho">
+          <div class="card-header">
+            <h3 class="card-title">Garrafa de Água Padrão</h3>
+            <img src="imgs/garrafa.png" alt="Garrafa de água" class="card-image" />
+          </div>
+          <div class="card-content">
+            <p class="card-description">Material feito de plástico, descarte na lixeira vermelha</p>
+            <button class="learn-more-btn"
+              onclick="openModal('Garrafa de Água Padrão', 'imgs/garrafa.png', 'Lixeira Vermelha', 'A garrafa de água padrão é feita geralmente de plástico PET (Polietileno Tereftalato), um tipo de plástico leve, transparente e resistente. É amplamente utilizada em bebidas devido à sua durabilidade e segurança para uso alimentar.', true)">Saiba
+              Mais</button>
+          </div>
+        </div>
+        <div class="card" data-lixeira="verde">
+          <div class="card-header">
+            <h3 class="card-title">Jarra de Vidro</h3>
+            <img src="imgs/jarra.png" alt="Jarra de vidro" class="card-image" />
+          </div>
+          <div class="card-content">
+            <p class="card-description">Material feito de vidro, descarte na lixeira verde</p>
+            <button class="learn-more-btn"
+              onclick="openModal('Jarra de Vidro', 'imgs/jarra.png', 'Lixeira Verde', 'A jarra de vidro é um utensílio durável feito de material 100% reciclável. Pode ser reutilizada várias vezes sem perda de qualidade, e é reciclada separadamente de outros tipos de vidro como espelhos ou cerâmicas.', true)">Saiba
+              Mais</button>
+          </div>
+        </div>
+        <div class="card" data-lixeira="azul">
+          <div class="card-header">
+            <h3 class="card-title">Papéis Diversos</h3>
+            <img src="imgs/papeis.png" alt="Papéis diversos" class="card-image" />
+          </div>
+          <div class="card-content">
+            <p class="card-description">Material feito de papel, descarte na lixeira azul</p>
+            <button class="learn-more-btn"
+              onclick="openModal('Papéis Diversos', 'imgs/papeis.png', 'Lixeira Azul', 'Papéis de uso comum, como folhas de caderno e sulfite, são altamente recicláveis. Quando limpos e secos, podem ser reaproveitados para produzir novos papéis, papelão e embalagens.', true)">Saiba
+              Mais</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Itens próprios para descarte Section -->
+    <h2 class="section-title" id="itemsSectionTitle">Itens próprios para descarte</h2>
+    <div class="items-grid" id="itemsGrid">
+      <div class="item-card">
+        <img src="/placeholder.svg?height=60&width=60" alt="Garrafa de água" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Garrafa de Água Padrão</h3>
+          <p class="item-description">Material feito de plástico, descarte na lixeira vermelha. Bla bla bla bla bla</p>
+          <button class="learn-more-btn"
+            onclick="openModal('Garrafa de Água Padrão', '/placeholder.svg?height=200&width=200', 'Lixeira Vermelha', 'Material feito de plástico, descarte na lixeira vermelha. Descrição detalhada do item.', true)">Saiba
+            Mais</button>
+        </div>
+      </div>
+      <div class="item-card">
+        <img src="/placeholder.svg?height=60&width=60" alt="Garrafa de água" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Garrafa de Água Padrão</h3>
+          <p class="item-description">Material feito de plástico, descarte na lixeira vermelha. Bla bla bla bla bla</p>
+          <button class="learn-more-btn"
+            onclick="openModal('Garrafa de Água Padrão', '/placeholder.svg?height=200&width=200', 'Lixeira Vermelha', 'Material feito de plástico, descarte na lixeira vermelha. Descrição detalhada do item.', true)">Saiba
+            Mais</button>
+        </div>
+      </div>
+      <div class="item-card">
+        <img src="/placeholder.svg?height=60&width=60" alt="Garrafa de água" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Garrafa de Água Padrão</h3>
+          <p class="item-description">Material feito de plástico, descarte na lixeira vermelha. Bla bla bla bla bla</p>
+          <button class="learn-more-btn"
+            onclick="openModal('Garrafa de Água Padrão', '/placeholder.svg?height=200&width=200', 'Lixeira Vermelha', 'Material feito de plástico, descarte na lixeira vermelha. Descrição detalhada do item.', true)">Saiba
+            Mais</button>
+        </div>
+      </div>
+      <div class="item-card">
+        <img src="/placeholder.svg?height=60&width=60" alt="Garrafa de água" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Garrafa de Água Padrão</h3>
+          <p class="item-description">Material feito de plástico, descarte na lixeira vermelha. Bla bla bla bla bla</p>
+          <button class="learn-more-btn"
+            onclick="openModal('Garrafa de Água Padrão', '/placeholder.svg?height=200&width=200', 'Lixeira Vermelha', 'Material feito de plástico, descarte na lixeira vermelha. Descrição detalhada do item.', true)">Saiba
+            Mais</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Os mais controversos Section-->
+    <h2 class="section-title" id="controversialSectionTitle" style="display: none;">Os mais controversos</h2>
+    <div class="items-grid" id="controversialGrid" style="display: none;">
+      <div class="item-card">
+        <img src="imgs/papeltoalha.png" alt="Papel toalha rolo" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Papel toalha</h3>
+          <p class="item-description">
+            Descrição do item controverso 1. Mesma aparência dos cards normais.
+          </p>
+          <button class="learn-more-btn"
+            onclick="openModal('Papel toalha', 'imgs/papeltoalha.png', 'Lixeira Marrom', 'Apesar de ser feito de papel, o papel toalha é considerado um resíduo comum, pois geralmente é contaminado com gordura, alimentos ou líquidos, o que impede a sua reciclagem.', false)">Saiba
+            Mais</button>
+        </div>
+      </div>
+      <div class="item-card">
+        <img src="imgs/leite.png" alt="Caixa de leite" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Caixa de leite</h3>
+          <p class="item-description">
+            Descrição do item controverso 2. Mesma aparência dos cards normais.
+          </p>
+          <button class="learn-more-btn"
+            onclick="openModal('Caixa de leite', 'imgs/leite.png', 'Lixeira Amarela', 'As embalagens longa vida, como caixas de leite, são compostas por várias camadas. Por isso, o processo de reciclagem é mais complexo, mas totalmente possível. Elas são transformadas em telhas ecológicas, placas e papel reciclado.', true)">Saiba
+            Mais</button>
+        </div>
+      </div>
+      <div class="item-card">
+        <img src="imgs/espelho.png" alt="Espelho" class="item-image" />
+        <div class="item-content">
+          <h3 class="item-title">Espelho</h3>
+          <p class="item-description">
+            Descrição do item controverso 2. Mesma aparência dos cards normais.
+          </p>
+          <button class="learn-more-btn"
+            onclick="openModal('Espelho', 'imgs/espelho.png', 'Lixeira Comum', 'Diferente do vidro comum, o espelho contém uma película de prata ou alumínio na parte traseira que o torna não reciclável pelos sistemas tradicionais. É considerado um resíduo de descarte especial.', false)">Saiba
+            Mais</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="back-btn" onclick="closeModal()">
+          <i class='bx bx-arrow-back'></i>
+        </button>
+        <h2 class="modal-title" id="modalTitle">Garrafa de Água Padrão</h2>
+        <div class="recycled-badge">
+          <span>Reciclado</span>
+          <i class='bx bx-check'></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="product-section">
+          <div class="product-image">
+            <img id="modalImage" src="imgs/garrafa.png" alt="Product Image">
+          </div>
+          <div class="product-info">
+            <div class="bin-type" id="modalBinType">Lixeira Vermelha</div>
+            <div class="product-description" id="modalDescription">
+              Descrição breve e muito legal Descrição breve e muito legal Descrição breve e muito legal Descrição breve
+              e muito legal Descrição breve e muito legal Descrição breve e muito legal.
+            </div>
+            <div class="collection-title">Postos de coleta pertos de você:</div>
+            <div class="map-container">
+              <span>Mapa com localizações de coleta</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-text">
+                <strong>Composição:</strong><br>
+                Plástico PET reciclável
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-text">
+                <strong>Tempo de decomposição:</strong><br>
+                Cerca de 400 anos
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-text">
+                <strong>Reciclagem:</strong><br>
+                Pode ser reciclada para produzir tecidos, novas embalagens e outros materiais plásticos
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-text">
+                <strong>Descarte:</strong><br>
+                Lixeira vermelha para plásticos
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="similar-section">
+          <div class="similar-title">Também se parece com:</div>
+          <div class="similar-grid">
+            <div class="similar-item">
+              <div class="similar-text">Copos plásticos descartáveis</div>
+            </div>
+            <div class="similar-item">
+              <div class="similar-text">Frascos de produtos de limpeza</div>
+            </div>
+            <div class="similar-item">
+              <div class="similar-text">Embalagens de óleo de cozinha</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.card');
+      const ecoTipsSection = document.getElementById('ecoTipsSection');
+      const sectionTitle = document.getElementById('sectionTitle');
+      const itemsSectionTitle = document.getElementById('itemsSectionTitle');
+      const itemsGrid = document.getElementById('itemsGrid');
+      const controversialSectionTitle = document.getElementById('controversialSectionTitle');
+      const controversialGrid = document.getElementById('controversialGrid');
+
+      function updateFilter(selectedColor) {
+        filterButtons.forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.filter === selectedColor);
+        });
+
+        let anyVisible = false;
+        cards.forEach((card) => {
+          const lixeira = card.dataset.lixeira;
+          const isPopular = ['vermelho', 'verde', 'azul'].includes(lixeira);
+
+          if (selectedColor === 'todos') {
+            sectionTitle.textContent = 'Populares';
+            card.style.display = isPopular ? 'block' : 'none';
+            if (isPopular) anyVisible = true;
+          } else {
+            sectionTitle.textContent = 'Diquinhas da EcoTrack';
+            card.style.display = lixeira === selectedColor ? 'block' : 'none';
+            if (lixeira === selectedColor) anyVisible = true;
+          }
+        });
+
+        ecoTipsSection.style.display = anyVisible ? 'block' : 'none';
+
+        if (selectedColor === 'todos') {
+          controversialSectionTitle.style.display = 'block';
+          controversialGrid.style.display = 'grid';
+          itemsSectionTitle.style.display = 'none';
+          itemsGrid.style.display = 'none';
+        } else {
+          controversialSectionTitle.style.display = 'none';
+          controversialGrid.style.display = 'none';
+          itemsSectionTitle.style.display = 'block';
+          itemsGrid.style.display = 'grid';
+        }
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const selectedColor = button.dataset.filter;
+          updateFilter(selectedColor);
+        });
+      });
+
+      updateFilter('todos');
+    });
+
+    // Modal Functions
+    function openModal(title, image, binType, description, recyclable = true) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalImage').src = image;
+      document.getElementById('modalBinType').textContent = binType;
+      document.getElementById('modalDescription').textContent = description;
+
+      // Update recyclable badge
+      const badge = document.querySelector('.recycled-badge');
+      if (recyclable) {
+        badge.innerHTML = '<span>Reciclável</span><i class="bx bx-check"></i>';
+        badge.style.background = '#4CAF50';
+      } else {
+        badge.innerHTML = '<span>Não Reciclável</span><i class="bx bx-x"></i>';
+        badge.style.background = '#ef4444';
+      }
+
+
+      document.getElementById('productModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('productModal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
